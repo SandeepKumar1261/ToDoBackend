@@ -13,12 +13,6 @@ router.post("/signup", async (req, res) => {
   const { email, password } = req.body;
 
   try {
-    console.log(
-      "in the my world ---------------",
-      jwtSecretEKy,
-      process.env.JWT_SECRET
-    );
-
     const existingUser = await User.findOne({ email });
     if (existingUser)
       return res.status(400).json({ msg: "Email already exists" });
